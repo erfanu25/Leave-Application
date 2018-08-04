@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'main.dart';
 import 'home.dart';
+import 'package:intl/intl.dart';
 
 class Contact {
   String name;
@@ -32,6 +33,7 @@ class _RequestState extends State<Request> {
   String _reason = '';
 
 
+
   //form submission to hr
   void _submitForm() {
     final FormState form = _formKey.currentState;
@@ -42,6 +44,10 @@ class _RequestState extends State<Request> {
     } else {
       form.save(); //This invokes each onSaved event
       final DocumentReference userdoc =Firestore.instance.collection(uname).document();
+      //date formatter
+      var now = new DateTime.now();
+      var formatter = new DateFormat('yyyy-MM-dd H:m:s');
+      String formatted = formatter.format(now);
       final DocumentReference documentReference = Firestore.instance.document(newContact.email+"/"+uemail+" "+DateTime.now().toString());
       Map<String, String> data = <String, String>{
         "name": newContact.name,
@@ -50,7 +56,7 @@ class _RequestState extends State<Request> {
         "from": newContact.fromDate,
         "to": newContact.toDate,
         "reason": newContact.reason,
-        "status": 'Pending',
+        "time": formatted,
         "email":uemail,
       };
       userdoc.setData(data);

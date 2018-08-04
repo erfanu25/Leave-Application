@@ -19,7 +19,7 @@ class MessageList extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return new SimpleDialog(
-            title: new Text('Request Details',textAlign: TextAlign.center),
+            title: new Text('My Request Details',textAlign: TextAlign.center),
 
             children: <Widget>[
               new Column(
@@ -122,13 +122,13 @@ class MessageList extends StatelessWidget {
                     ),
                     new Container(
                       child: new ListTile(
-                        title: new Text("Employee Name: "+document['name']+"\nLeave Type: "+document['leave']+
-                            "\nLeave Status: "+document['status']
+                        title: new Text("Employee Name: "+document['name']+"\nLeave Type: "+document['leave']
                             ?? '<No message retrieved>'),
-                        subtitle: new Text('Message ${index + 1} of $messageCount'),
+                        subtitle: new Text('Message ${index + 1} of $messageCount'+" \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"+document['time'],
+                            style: new TextStyle(fontSize: 15.0,color: Colors.purpleAccent,fontStyle: FontStyle.italic)),
                       ),
-
                     ),
+                  //  new Text(document['time']),
                     new Divider(height: 20.5,color: Colors.deepPurple,),
                   ],
 
@@ -152,7 +152,7 @@ class Status extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: const Text('Requests Status'),
+          title: const Text('My Requests Status'),
         ),
         body: new Stack(
           fit: StackFit.expand,

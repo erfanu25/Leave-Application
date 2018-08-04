@@ -19,13 +19,13 @@ class MessageList extends StatelessWidget {
         barrierDismissible: false, // user must tap button!
         builder: (BuildContext context) {
           return new SimpleDialog(
-            title: new Text('Request Details',textAlign: TextAlign.center),
+            title: new Text('Employee Request Details',textAlign: TextAlign.center),
 
             children: <Widget>[
               new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new Row(
+                  new Wrap(
                     children: <Widget>[
                       new Text('    Employee Name:',
                           style: new TextStyle(fontSize: 15.0,color: Colors.deepPurpleAccent,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)
@@ -33,7 +33,7 @@ class MessageList extends StatelessWidget {
                       new Text(name),
                     ],
                   ),
-                  new Row(
+                  new Wrap(
                     children: <Widget>[
                       new Text('    Email:',
                           style: new TextStyle(fontSize: 15.0,color: Colors.deepPurpleAccent,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)
@@ -41,7 +41,7 @@ class MessageList extends StatelessWidget {
                       new Text(email),
                     ],
                   ),
-                  new Row(
+                  new Wrap(
                     children: <Widget>[
                       new Text('    Phone No:',
                           style: new TextStyle(fontSize: 15.0,color: Colors.deepPurpleAccent,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)
@@ -49,7 +49,7 @@ class MessageList extends StatelessWidget {
                       new Text(phone),
                     ],
                   ),
-                  new Row(
+                  new Wrap(
                     children: <Widget>[
                       new Text('    Leave Type:',
                           style: new TextStyle(fontSize: 15.0,color: Colors.deepPurpleAccent,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)
@@ -57,7 +57,7 @@ class MessageList extends StatelessWidget {
                       new Text(type),
                     ],
                   ),
-                  new Row(
+                  new Wrap(
                     children: <Widget>[
                       new Text('    From:',
                           style: new TextStyle(fontSize: 15.0,color: Colors.deepPurpleAccent,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)
@@ -65,7 +65,7 @@ class MessageList extends StatelessWidget {
                       new Text(from),
                     ],
                   ),
-                  new Row(
+                  new Wrap(
                     children: <Widget>[
                       new Text('    To:',
                           style: new TextStyle(fontSize: 15.0,color: Colors.deepPurpleAccent,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)
@@ -73,7 +73,7 @@ class MessageList extends StatelessWidget {
                       new Text(to),
                     ],
                   ),
-                  new Row(
+                  new Wrap(
                     children: <Widget>[
                       new Text('    Reason Details:',
                           style: new TextStyle(fontSize: 15.0,color: Colors.deepPurpleAccent,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)
@@ -81,23 +81,7 @@ class MessageList extends StatelessWidget {
                       new Text(reason),
                     ],
                   ),
-                  new Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      new MaterialButton(
-                        onPressed: null,
-                        child: new Text("Accept",
-                          style: new TextStyle(fontSize: 17.0,color: Colors.green,fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      new MaterialButton(
-                        onPressed: null,
-                        child: new Text("Reject",
-                          style: new TextStyle(fontSize: 17.0,color: Colors.red,fontWeight: FontWeight.bold),
-                        ),
-                      )
-                    ],
-                  ),
+
                   new Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
@@ -112,7 +96,7 @@ class MessageList extends StatelessWidget {
 
                 ],
               ),
-              
+
                 ],
           );
         },
@@ -140,9 +124,10 @@ class MessageList extends StatelessWidget {
                  new Container(
                    child: new ListTile(
                      title: new Text("Employee Name: "+document['name']+"\nLeave Type: "+document['leave']+
-                         "\nLeave Status: "+document['status']
+                         "\nPhone No.: "+document['phone']
                          ?? '<No message retrieved>'),
-                     subtitle: new Text('Message ${index + 1} of $messageCount'),
+                     subtitle: new Text('Message ${index + 1} of $messageCount'+" \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"+document['time'],
+                         style: new TextStyle(fontSize: 15.0,color: Colors.deepPurpleAccent,fontStyle: FontStyle.italic)),
                    ),
 
                  ),
